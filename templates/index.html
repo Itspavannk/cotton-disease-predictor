@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Agro | Cotton Disease AI By Pavan</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="logo">🌿 Smart<span id="ag">Agro</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#predict">Predict</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <span class="hero-tag">Original & Natural</span>
+
+<h1>
+  <span class="highlight">
+    Agriculture Matte<span class="accent-letter">r</span>
+  </span><br>
+  Good production
+</h1>
+
+
+    <p>
+      Empowering farmers with AI-driven solutions to detect cotton plant diseases
+at an early stage. Our system analyzes leaf images and provides accurate
+diagnosis with preventive and treatment guidance for better crop health.
+
+    </p>
+
+    <a href="#about" class="hero-btn">Discover More</a>
+  </div>
+</section>
+
+
+
+
+<!-- ================= ABOUT ================= -->
+<section class="about-section reveal-left" id="about">
+
+  <div class="about-container">
+
+    <!-- LEFT IMAGE CARD -->
+    <div class="about-image">
+      <img src="/static/img/about.jpg" alt="Agriculture field">
+
+      <!-- SMALL BADGE -->
+      <div class="about-badge">
+        <h3>100+</h3>
+        <p>Successfully Disease Prediction Completed</p>
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="about-content">
+      <span class="about-tag">OUR INTRODUCTION</span>
+
+      <h2>Smart Agriculture and<br>AI-based Crop Care</h2>
+
+      <h4>We’re Leader in Agriculture Technology</h4>
+
+      <p>
+        Our system uses artificial intelligence to analyze cotton plant images
+        and detect diseases at an early stage. This helps farmers take preventive
+        action and improve crop productivity.
+      </p>
+
+      <ul class="about-list">
+        <li>AI-powered disease detection</li>
+        <li>Early prevention and treatment guidance</li>
+        <li>Improves cotton crop yield</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ================= PREDICT ================= -->
+<section class="predict-section fade-bottom" id="predict">
+
+  <div class="predict-header">
+    <span class="section-tag">AI PREDICTION</span>
+    <h2>Predict Cotton Disease</h2>
+    <p>
+      Upload a cotton leaf or plant image and get instant disease analysis.
+    </p>
+  </div>
+
+  <!-- ONLY ONE GRID -->
+  <div class="predict-grid single" id="predictGrid">
+
+    <!-- LEFT SIDE -->
+    <div class="predict-left">
+    <form id="upload-form">
+
+  <!-- Upload box -->
+  <label class="upload-box">
+    <input type="file" id="image-input" accept="image/*">
+    <span>Upload Cotton Leaf / Plant Image</span>
+  </label>
+
+  <!-- Preview -->
+  <div class="preview-wrapper">
+    <div id="preview" class="preview" style="display:none;">
+      <img id="preview-img">
+    </div>
+  </div>
+
+  <!-- Predict button -->
+  <button id="predict-btn" disabled>Predict Disease</button>
+
+</form>
+
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="predict-right">
+
+      <!-- Loader -->
+      <div id="loader" class="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p>Analyzing image…</p>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="result" style="display:none;"></div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ***************Services**************  -->
+
+<section class="services-x-section" id="services">
+  <h2 class="services-x-title">Our Services</h2>
+  <p class="services-x-sub">Smart AI solutions crafted for modern agriculture</p>
+
+  <div class="services-x-grid">
+
+    <!-- CARD 1 -->
+    <div class="services-x-card">
+      <div class="service-img" style="background-image:url('../static/img/disease.jpg')"></div>
+      <span class="service-bg-num">01</span>
+      <div class="service-icon">🦠</div>
+      <h4>Disease Detection</h4>
+      <p>AI-powered identification of cotton plant diseases using deep learning.</p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="services-x-card">
+      <div class="service-img" style="background-image:url('../static/img/disease2.jpg')"></div>
+      <span class="service-bg-num">02</span>
+      <div class="service-icon">📸</div>
+      <h4>Image Diagnosis</h4>
+      <p>Upload cotton leaf images and get instant intelligent analysis.</p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="services-x-card">
+      <div class="service-img" style="background-image:url('../static/img/disease3.jpg')"></div>
+      <span class="service-bg-num">03</span>
+      <div class="service-icon">💊</div>
+      <h4>Treatment Guide</h4>
+      <p>Prevention and treatment recommendations for better yield.</p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="services-x-card">
+      <div class="service-img" style="background-image:url('../static/img/service4.jpg')"></div>
+      <span class="service-bg-num">04</span>
+      <div class="service-icon">👨‍🌾</div>
+      <h4>Farmer Support</h4>
+      <p>Easy, farmer-friendly system usable on mobile and desktop.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-x-section">
+  <h2 class="how-x-title">How It Works</h2>
+  <p class="how-x-sub">AI-powered cotton disease detection in 4 smart steps</p>
+
+  <div class="how-x-timeline">
+
+    <div class="how-x-step left">
+      <div class="x-icon">📸</div>
+      <div class="x-card">
+        <h4>Upload Image</h4>
+        <p>Upload cotton leaf or plant image into the system.</p>
+      </div>
+    </div>
+
+    <div class="how-x-step right">
+      <div class="x-icon">🧠</div>
+      <div class="x-card">
+        <h4>AI Analysis</h4>
+        <p>Deep learning model analyzes disease patterns.</p>
+      </div>
+    </div>
+
+    <div class="how-x-step left">
+      <div class="x-icon">🦠</div>
+      <div class="x-card">
+        <h4>Disease Detection</h4>
+        <p>System predicts disease with confidence score.</p>
+      </div>
+    </div>
+
+    <div class="how-x-step right">
+      <div class="x-icon">💊</div>
+      <div class="x-card">
+        <h4>Treatment Guide</h4>
+        <p>Prevention and treatment recommendations shown.</p>
+      </div>
+    </div>
+
+    <!-- CENTER LINE -->
+    <span class="how-x-line"></span>
+  </div>
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section class="contact-ultra" id="contact">
+  <div class="contact-bg"></div>
+
+ <div class="contact-ultra-wrapper">
+  <h2 class="contact-main-heading">Contact Us</h2>
+    <p class="contact-main-tagline">
+    Have an idea, project, or question? Let’s connect.
+  </p>
+
+
+    <!-- RIGHT : CONTACT FORM (NOW FIRST) -->
+    <div class="contact-container">
+      <h2 class="contact-title">Let's Talk</h2>
+      <p class="contact-sub">Have an idea or question? Reach out.</p>
+
+      <form class="contact-form">
+        <div class="input-group">
+          <input type="text" required>
+          <label id="name">Your Name</label>
+          <span class="glow-line"></span>
+        </div>
+
+        <div class="input-group">
+          <input type="email" required>
+          <label id="email">Email Address</label>
+          <span class="glow-line"></span>
+        </div>
+
+        <div class="input-group textarea">
+          <textarea required></textarea>
+          <label id="msg">Your Message</label>
+          <span class="glow-line"></span>
+        </div>
+
+        <button class="contact-btn">
+          <span>Send Message</span>
+          <div class="btn-glow"></div>
+        </button>
+      </form>
+    </div>
+
+    <!-- LEFT : ABOUT ME (NOW SECOND) -->
+    <div class="about-me-ultra">
+      <span class="about-tag">CREATOR</span>
+      <h2>Pavan Naik</h2>
+      <h4>AI & Web Developer</h4>
+
+      <p class="about-desc">
+        I built an AI-powered Cotton Disease Detection system
+        to help farmers identify plant diseases early and
+        improve crop yield using modern technology.
+      </p>
+
+      <div class="about-pills">
+        <span>AI / ML</span>
+        <span>Deep Learning</span>
+        <span>Smart Agriculture</span>
+        <span>Full Stack</span>
+      </div>
+
+      <div class="about-highlight">
+        <span>🌿</span>
+        Building technology for farmers & the future
+      </div>
+
+      <div class="about-contact-info">
+
+        <div class="info-item">
+          <span>📧</span>
+          <p>
+            <a href="mailto:itspavannaik001@gmail.com" style="color:#f4c430;text-decoration:none;">
+              itspavannaik001@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div class="info-item">
+          <span>📍</span>
+          <p>Honnavar , Karnataka - 581334<br>
+            India</p>
+        </div>
+
+        <div class="info-item">
+          <span>📞</span>
+          <p>
+            <a href="tel:+918310511024" style="color:#f4c430;text-decoration:none;">
+              +91 8310511024
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  © 2026 Smart Agro · Cotton Disease Detection Using AI  
+  <br>
+  <span>Designed & Developed by Pavan Naik</span>
+</footer>
+
+
+<script src="/static/js/app.js"></script>
+<script src="/static/js/animation.js"></script>
+</body>
+</html>
