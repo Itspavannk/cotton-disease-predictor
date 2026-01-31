@@ -334,7 +334,8 @@ body {
 .predict-header {
   margin-top: 20px;
   max-width: 600px;
-  margin-left: 31.5%;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 50px;
   text-align: center;
   opacity: 0;
@@ -401,7 +402,9 @@ body {
 .predict-grid.single {
   grid-template-columns: 1fr;
   max-width: 440px;
-  margin-left: 37%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .predict-grid.split {
@@ -2372,6 +2375,9 @@ footer {
   .navbar {
     padding: 10px 12px;
   }
+  .hero{
+    width: 100%;
+  }
   
   .logo {
     font-size: 22px;
@@ -2556,6 +2562,18 @@ footer {
     font-size: 10px;
     padding: 7px 8px;
   }
+  #scrollToTop {
+    display: none !important;
+  }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
