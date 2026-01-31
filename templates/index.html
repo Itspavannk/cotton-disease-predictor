@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Agro | Cotton Disease AI By Pavan</title>
   <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/modal-styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
@@ -16,48 +20,42 @@
     <li><a href="#home">Home</a></li>
     <li><a href="#predict">Predict</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#features">Services</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-bg"></div>
 
   <div class="hero-content">
     <span class="hero-tag">Original & Natural</span>
 
-<h1>
-  <span class="highlight">
-    Agriculture Matte<span class="accent-letter">r</span>
-  </span><br>
-  Good production
-</h1>
-
+    <h1>
+      <span class="highlight">
+        Agriculture Matte<span class="accent-letter">r</span>
+      </span><br>
+      Good production
+    </h1>
 
     <p>
       Empowering farmers with AI-driven solutions to detect cotton plant diseases
-at an early stage. Our system analyzes leaf images and provides accurate
-diagnosis with preventive and treatment guidance for better crop health.
-
+      at an early stage. Our system analyzes leaf images and provides accurate
+      diagnosis with preventive and treatment guidance for better crop health.
     </p>
 
     <a href="#about" class="hero-btn">Discover More</a>
   </div>
 </section>
 
-
-
-
 <!-- ================= ABOUT ================= -->
-<section class="about-section reveal-left" id="about">
-
+<section class="about-section" id="about">
   <div class="about-container">
 
     <!-- LEFT IMAGE CARD -->
     <div class="about-image">
-      <img src="/static/img/about.jpg" alt="Agriculture field">
+      <img src="/static/img/about.jpg" alt="Agriculture field" loading="lazy">
 
       <!-- SMALL BADGE -->
       <div class="about-badge">
@@ -72,7 +70,7 @@ diagnosis with preventive and treatment guidance for better crop health.
 
       <h2>Smart Agriculture and<br>AI-based Crop Care</h2>
 
-      <h4>We’re Leader in Agriculture Technology</h4>
+      <h4>We're Leader in Agriculture Technology</h4>
 
       <p>
         Our system uses artificial intelligence to analyze cotton plant images
@@ -90,8 +88,6 @@ diagnosis with preventive and treatment guidance for better crop health.
   </div>
 </section>
 
-
-
 <!-- ================= PREDICT ================= -->
 <section class="predict-section fade-bottom" id="predict">
 
@@ -108,27 +104,28 @@ diagnosis with preventive and treatment guidance for better crop health.
 
     <!-- LEFT SIDE -->
     <div class="predict-left">
-    <form id="upload-form">
+      <div id="upload-form">
 
-  <!-- Upload box -->
-  <label class="upload-box">
-    <input type="file" id="image-input" accept="image/*">
-    <span>Upload Cotton Leaf / Plant Image</span>
-  </label>
+        <!-- Upload box - Now triggers modal -->
+        <button type="button" class="upload-box" id="upload-trigger">
+          <span>📤 Upload Cotton Leaf / Plant Image</span>
+        </button>
 
-  <!-- Preview -->
-  <div class="preview-wrapper">
-    <div id="preview" class="preview" style="display:none;">
-      <img id="preview-img">
-    </div>
-  </div>
+        <!-- Hidden file inputs -->
+        <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none;">
+        <input type="file" id="file-input" accept="image/*" style="display:none;">
 
-  <!-- Predict button -->
-  <button id="predict-btn" disabled>Predict Disease</button>
+        <!-- Preview -->
+        <div class="preview-wrapper">
+          <div id="preview" class="preview" style="display:none;">
+            <img id="preview-img" alt="Preview">
+          </div>
+        </div>
 
-</form>
+        <!-- Predict button -->
+        <button id="predict-btn" type="button" class="predict-button" disabled>Predict Disease</button>
 
-
+      </div>
     </div>
 
     <!-- RIGHT SIDE -->
@@ -148,9 +145,32 @@ diagnosis with preventive and treatment guidance for better crop health.
   </div>
 </section>
 
+<!-- ================= IMAGE SOURCE MODAL ================= -->
+<div id="image-source-modal" class="image-modal" style="display:none;">
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal-content">
+    <h3>Choose Image Source</h3>
+    <p>How would you like to upload the cotton leaf image?</p>
+    
+    <div class="modal-options">
+      <button type="button" class="modal-option-btn" id="camera-btn">
+        <span class="option-icon">📸</span>
+        <span class="option-text">Camera</span>
+        <span class="option-desc">Take a photo</span>
+      </button>
+      
+      <button type="button" class="modal-option-btn" id="gallery-btn">
+        <span class="option-icon">🖼️</span>
+        <span class="option-text">Gallery</span>
+        <span class="option-desc">Choose from device</span>
+      </button>
+    </div>
+    
+    <button type="button" class="modal-close" id="modal-close">Cancel</button>
+  </div>
+</div>
 
-<!-- ***************Services**************  -->
-
+<!-- ================= SERVICES ================= -->
 <section class="services-x-section" id="services">
   <h2 class="services-x-title">Our Services</h2>
   <p class="services-x-sub">Smart AI solutions crafted for modern agriculture</p>
@@ -196,7 +216,6 @@ diagnosis with preventive and treatment guidance for better crop health.
   </div>
 </section>
 
-
 <!-- ================= HOW IT WORKS ================= -->
 <section class="how-x-section">
   <h2 class="how-x-title">How It Works</h2>
@@ -241,17 +260,15 @@ diagnosis with preventive and treatment guidance for better crop health.
   </div>
 </section>
 
-
 <!-- ================= CONTACT ================= -->
 <section class="contact-ultra" id="contact">
   <div class="contact-bg"></div>
 
- <div class="contact-ultra-wrapper">
-  <h2 class="contact-main-heading">Contact Us</h2>
+  <div class="contact-ultra-wrapper">
+    <h2 class="contact-main-heading">Contact Us</h2>
     <p class="contact-main-tagline">
-    Have an idea, project, or question? Let’s connect.
-  </p>
-
+      Have an idea, project, or question? Let's connect.
+    </p>
 
     <!-- RIGHT : CONTACT FORM (NOW FIRST) -->
     <div class="contact-container">
@@ -340,9 +357,7 @@ diagnosis with preventive and treatment guidance for better crop health.
 
   </div>
 
-  </div>
 </section>
-
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
@@ -351,8 +366,46 @@ diagnosis with preventive and treatment guidance for better crop health.
   <span>Designed & Developed by Pavan Naik</span>
 </footer>
 
+<!-- ================= SCROLL TO TOP BUTTON ================= -->
+<button id="scrollToTop" class="scroll-to-top" title="Back to top" aria-label="Scroll to top">
+  <span>↑</span>
+</button>
 
-<script src="/static/js/app.js"></script>
 <script src="/static/js/animation.js"></script>
+<script src="/static/js/image-upload.js"></script>
+<script src="/static/js/app.js"></script>
+
+<!-- Scroll to Top Functionality - Optimized -->
+<script>
+(function() {
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  let ticking = false;
+
+  // Use passive listener for better scroll performance
+  function checkScroll() {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add('show');
+    } else {
+      scrollToTopBtn.classList.remove('show');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(checkScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
