@@ -2,4 +2,4 @@ flask==3.0.0
 gunicorn
 numpy
 pillow
-tflite-runtime==2.15.0
+tflite-runtime==2.14.0
