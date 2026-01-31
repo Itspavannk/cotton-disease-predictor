@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 import os
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input
+from PIL import Image
+import tflite_runtime.interpreter as tflite
 from disease_info import disease_data
 
 # =========================
@@ -12,15 +11,20 @@ from disease_info import disease_data
 app = Flask(__name__)
 
 UPLOAD_FOLDER = "uploads"
-MODEL_PATH = "model/cotton_model.h5"
+MODEL_PATH = os.path.join("model", "cotton_model.tflite")
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # =========================
-# LOAD MODEL
+# LOAD TFLITE MODEL
 # =========================
-model = load_model(MODEL_PATH, compile=False)
-print("✅ Model loaded successfully")
+interpreter = tflite.Interpreter(model_path=MODEL_PATH)
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+print("✅ TFLite model loaded successfully")
 
 # ⚠️ MUST MATCH train_gen.class_indices ORDER
 CLASS_NAMES = [
@@ -32,11 +36,18 @@ CLASS_NAMES = [
 
 # =========================
 # PREPROCESS IMAGE
+# (ResNet50-style, TFLite safe)
 # =========================
 def preprocess_image(img_path):
-    img = image.load_img(img_path, target_size=(224, 224))
-    img = image.img_to_array(img)
-    img = preprocess_input(img)   # ResNet50 preprocessing
+    img = Image.open(img_path).convert("RGB")
+    img = img.resize((224, 224))
+    img = np.array(img, dtype=np.float32)
+
+    # ResNet50 preprocess_input equivalent
+    img[..., 0] -= 103.939
+    img[..., 1] -= 116.779
+    img[..., 2] -= 123.68
+
     img = np.expand_dims(img, axis=0)
     return img
 
@@ -62,19 +73,23 @@ def predict():
     file.save(file_path)
 
     try:
-        # 3️⃣ Preprocess & predict
+        # 3️⃣ Preprocess
         img = preprocess_image(file_path)
-        preds = model.predict(img)[0]
+
+        # 4️⃣ Run inference
+        interpreter.set_tensor(input_details[0]["index"], img)
+        interpreter.invoke()
+        preds = interpreter.get_tensor(output_details[0]["index"])[0]
 
         class_index = int(np.argmax(preds))
         confidence = float(np.max(preds) * 100)
 
         label = CLASS_NAMES[class_index]
 
-        # 4️⃣ Fetch disease details
+        # 5️⃣ Fetch disease details
         info = disease_data.get(label, {})
 
-        # 5️⃣ Send JSON response
+        # 6️⃣ Send JSON response
         return jsonify(
             success=True,
             label=label,
@@ -86,6 +101,7 @@ def predict():
         )
 
     except Exception as e:
+        print("🔥 Prediction error:", e)
         return jsonify(success=False, error=str(e))
 
 # =========================
